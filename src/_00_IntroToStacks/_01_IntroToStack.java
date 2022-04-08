@@ -25,8 +25,9 @@ public class _01_IntroToStack {
         // NUM 2: 75
     	System.out.println("Elements between " + x + " and " + y);
     	while( ! dob.isEmpty() ) {
-    		if (dob.pop()>=x && dob.pop()<=y) {
-            	System.out.println(dob.pop());
+    		Double popped = dob.pop();
+    		if (popped>=x && popped<=y) {
+            	System.out.println(popped);
 			}
         }
         // Popping elements off stack...

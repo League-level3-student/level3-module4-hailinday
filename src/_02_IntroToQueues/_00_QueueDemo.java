@@ -33,7 +33,8 @@ public class _00_QueueDemo {
          */
         
         /*
-         * Initializing a Queue of Strings using the ArrayDeque class.
+         * Initializing 
+         * a Queue of Strings using the ArrayDeque class.
          * Deque is short for double-ended queue, which is a Queue with
          * additional methods and functionality. 
          */

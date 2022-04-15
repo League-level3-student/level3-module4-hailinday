@@ -3,6 +3,7 @@ package _00_IntroToStacks;
 import java.awt.Panel;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Stack;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,6 +26,7 @@ public class _02_TextUndoRedo implements KeyListener {
      * pressed, the top Character is popped  off the Stack and added back to
      * the JLabel.
      */
+	Stack<String> chars = new Stack<String>();
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
 	JLabel label = new JLabel();
@@ -41,15 +43,20 @@ public class _02_TextUndoRedo implements KeyListener {
 		frame.addKeyListener(this);
 		frame.pack();
 	}
-	public void redo() {
-		
-	}
 	public void undo() {
 		
+		String popped = chars.pop();
+		label.setText(builder.append(popped).toString());
 	}
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
+		if (builder.toString().equals("") || chars.size()==0) {
+			
+		} else if (e.getKeyChar()==KeyEvent.VK_MINUS) {
+			undo();
+		}
+		
 		if (Character.isAlphabetic(e.getKeyChar()) || Character.isDigit(e.getKeyChar()) || Character.isSpace(e.getKeyChar())) {
 			label.setText(builder.append(e.getKeyChar()).toString());
 			frame.pack();
@@ -60,9 +67,9 @@ public class _02_TextUndoRedo implements KeyListener {
 		// TODO Auto-generated method stub
 		if (e.getKeyCode()==KeyEvent.VK_BACK_SPACE) {
 			if (builder.toString().equals("")) {
-				System.out.println("bbbbbbb");
+				
 			} else {
-				System.out.println("nnn");
+				chars.add(builder.charAt(builder.length()-1) + "");
 				label.setText(builder.deleteCharAt(builder.length()-1).toString());
 			}
 		}

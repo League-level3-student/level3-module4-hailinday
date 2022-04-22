@@ -64,11 +64,21 @@ public class _01_IntroToQueue {
         // 6. Pop off as many elements from the stack to fill the Queue with 5
         //    elements. If there aren't enough elements in the Stack to fill the 
         //    queue, fill the queue as much as possible. 
-    	while (doubQue.size()<=5) {
-    		doubQue.add(doub.pop());
+    		if (doubQue.size()<=5 && doub.size() >0) {
+				for (int i = 0; i < 5-doubQue.size(); i++) {
+					doubQue.add(doub.pop());
+				}
     	}
         // 7. Loop until there are no more elements in either the Stack or Queue
         //    and all the elements are printed
-        
+    	while (doubQue.size()>0 || doub.size() > 0) {
+    		String remover = "";
+    		remover = " " + doubQue.remove();
+    		if (doub.size()>0) {
+    			doubQue.add(doub.pop());
+			}
+    		System.out.println("Next Element: " + remover);
+    		
+    	}
     }
 }
